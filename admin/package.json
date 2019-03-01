@@ -1,0 +1,8 @@
+{
+  "name": "@gngt/ionic/admin",
+  "typings": "../admin.d.ts",
+  "main": "../bundles/ionic-admin.umd.js",
+  "module": "../esm5/admin.es5.js",
+  "es2015": "../esm2015/admin.js",
+  "sideEffects": false
+}

@@ -1,0 +1,41 @@
+{
+  "name": "@gngt/ionic",
+  "version": "7.0.0-alpha.5-df60176",
+  "description": "",
+  "main": "./bundles/ionic.umd.js",
+  "module": "./esm5/ionic.es5.js",
+  "es2015": "./esm2015/ionic.js",
+  "typings": "./ionic.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gnucoop/gngt.git"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gnucoop/gngt/issues"
+  },
+  "homepage": "https://github.com/gnucoop/gngt#readme",
+  "peerDependencies": {
+    "@angular/animations": ">=7.0.0",
+    "@angular/core": ">=7.0.0",
+    "@angular/common": ">=7.0.0",
+    "@angular/router": ">=7.0.0",
+    "@ionic/angular": ">=4.0.0"
+  },
+  "dependencies": {
+    "tslib": "^1.7.1"
+  },
+  "schematics": "./schematics/collection.json",
+  "ng-update": {
+    "migrations": "./schematics/migration.json",
+    "packageGroup": [
+      "@gngt/ionic",
+      "@gngt/core"
+    ]
+  },
+  "sideEffects": false,
+  "releaseGitCommitSha": "df60176f0a3c33cf0741da474d0367cfdb68455c",
+  "releaseGitBranch": "master",
+  "releaseGitUser": "trik <marco.marche@gnucoop.com>"
+}
