@@ -115,7 +115,10 @@ var AdminEditComponent = /** @class */ (function (_super) {
                         'fields',
                         'processFormData',
                         'processObject',
-                        'id'
+                        'id',
+                    ],
+                    outputs: [
+                        'valueChanges$',
                     ]
                 },] },
     ];

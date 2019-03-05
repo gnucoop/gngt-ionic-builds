@@ -116,7 +116,10 @@ AdminEditComponent.decorators = [
                     'fields',
                     'processFormData',
                     'processObject',
-                    'id'
+                    'id',
+                ],
+                outputs: [
+                    'valueChanges$',
                 ]
             },] },
 ];
