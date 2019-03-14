@@ -19,14 +19,14 @@
  *
  */
 import { CommonModule } from '@angular/common';
-import { Injectable, Component, ChangeDetectionStrategy, ViewEncapsulation, ChangeDetectorRef, NgModule } from '@angular/core';
+import { Injectable, Component, ChangeDetectionStrategy, ViewEncapsulation, ChangeDetectorRef, Input, ViewChild, NgModule } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { AlertController, IonicModule } from '@ionic/angular';
+import { AlertController, IonInfiniteScroll, IonicModule } from '@ionic/angular';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { CommonModule as CommonModule$1 } from '@gngt/core/common';
-import { from } from 'rxjs';
-import { switchMap, mapTo, map } from 'rxjs/operators';
+import { from, Subscription } from 'rxjs';
+import { switchMap, mapTo, map, filter } from 'rxjs/operators';
 import { AdminUserInteractionsService as AdminUserInteractionsService$1, AdminEditComponent as AdminEditComponent$1, AdminListComponent as AdminListComponent$1 } from '@gngt/core/admin';
 
 /**
@@ -144,6 +144,60 @@ class AdminListComponent extends AdminListComponent$1 {
      */
     constructor(cdr, aui) {
         super(cdr, aui);
+        this._items = [];
+        this._hasMore = true;
+        this._listSub = Subscription.EMPTY;
+        this._listParams = { start: 0, limit: 20, sort: {} };
+    }
+    /**
+     * @return {?}
+     */
+    get items() { return this._items; }
+    /**
+     * @return {?}
+     */
+    get hasMore() { return this._hasMore; }
+    /**
+     * @return {?}
+     */
+    ngOnDestroy() {
+        super.ngOnDestroy();
+        this._listSub.unsubscribe();
+    }
+    /**
+     * @return {?}
+     */
+    ngOnInit() {
+        /** @type {?} */
+        const service = this._getService();
+        if (service == null) {
+            return;
+        }
+        if (this.baseListParams) {
+            if (this.baseListParams.start != null) {
+                this._listParams.start = this.baseListParams.start;
+            }
+            if (this.baseListParams.limit != null) {
+                this._listParams.limit = this.baseListParams.limit;
+            }
+        }
+        this._listSub = service.getListObjects().pipe(filter((/**
+         * @param {?} r
+         * @return {?}
+         */
+        r => r != null))).subscribe((/**
+         * @param {?} r
+         * @return {?}
+         */
+        r => {
+            if (this.infiniteScroll) {
+                ((/** @type {?} */ (this.infiniteScroll))).complete();
+            }
+            this._items = [...this._items, ...((/** @type {?} */ (r)).results || [])];
+            this._hasMore = (/** @type {?} */ (r)).next != null;
+            this._cdr.markForCheck();
+        }));
+        this._loadList();
     }
     /**
      * @return {?}
@@ -171,12 +225,35 @@ class AdminListComponent extends AdminListComponent$1 {
      * @return {?}
      */
     refreshList() {
+        this._listParams.start = 0;
+        this._loadList();
+    }
+    /**
+     * @return {?}
+     */
+    loadMore() {
+        (/** @type {?} */ (this._listParams.start)) += (/** @type {?} */ (this._listParams.limit));
+        this._loadList();
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    _loadList() {
+        /** @type {?} */
+        const service = this._getService();
+        if (service == null || !this._hasMore) {
+            return;
+        }
+        /** @type {?} */
+        const listParams = Object.assign({}, (this.baseListParams || {}), this._listParams);
+        service.list(listParams);
     }
 }
 AdminListComponent.decorators = [
     { type: Component, args: [{selector: 'gngt-admin-list',
-                template: "",
-                styles: ["gngt-admin-list{display:block}gngt-admin-list>.mat-card>[mat-card-header]{margin:-24px -24px 48px;padding:24px;box-shadow:0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12)}gngt-admin-list>.mat-card>[mat-card-header]+[mat-mini-fab]{position:absolute;right:24px;margin-top:-70px}gngt-admin-list>.mat-card>.mat-card-content>.mat-toolbar{margin:1em 0}gngt-admin-list>.mat-card>.mat-card-content>.mat-toolbar .gngt-spacer{flex:0 0 .5em}gngt-admin-list>.mat-card>.mat-card-content>.mat-toolbar .gngt-filler{flex:1 1 auto}gngt-admin-list>.mat-card>.mat-card-content>.mat-toolbar .mat-paginator{background:0 0}gngt-admin-list>.mat-card>.mat-card-content>.mat-toolbar .gngt-actions{display:flex;align-items:center}gngt-admin-list>.mat-card>.mat-card-content>.mat-toolbar .gngt-actions>*{flex-shrink:0}gngt-admin-list>.mat-card>.mat-card-content table{width:100%}gngt-admin-list>.mat-card>.mat-card-content table td:not(.gngt-select){cursor:pointer}"],
+                template: "<div><ion-card><ion-card-content><ion-content><ion-virtual-scroll [items]=\"items\"><ion-item *virtualItem=\"let item\">{{ item|json }}</ion-item></ion-virtual-scroll><ion-infinite-scroll *ngIf=\"hasMore\" threshold=\"100px\" (ionInfinite)=\"loadMore()\"><ion-infinite-scroll-content loadingSpinner=\"bubbles\"></ion-infinite-scroll-content></ion-infinite-scroll></ion-content></ion-card-content></ion-card></div>",
+                styles: ["gngt-admin-list{display:block;position:relative}gngt-admin-list>div{height:100%}gngt-admin-list>div>ion-card{height:calc(100% - 20px)}gngt-admin-list>div>ion-card>ion-card-content{height:100%}"],
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 encapsulation: ViewEncapsulation.None,
                 inputs: [
@@ -194,6 +271,10 @@ AdminListComponent.ctorParameters = () => [
     { type: ChangeDetectorRef },
     { type: AdminUserInteractionsService }
 ];
+AdminListComponent.propDecorators = {
+    baseListParams: [{ type: Input }],
+    infiniteScroll: [{ type: ViewChild, args: [IonInfiniteScroll,] }]
+};
 
 /**
  * @fileoverview added by tsickle
