@@ -1,6 +1,6 @@
 {
   "name": "@gngt/ionic",
-  "version": "7.0.0-beta.4-ed60d27",
+  "version": "7.0.7-90d4109",
   "description": "",
   "main": "./bundles/ionic.umd.js",
   "module": "./esm5/ionic.es5.js",
@@ -21,7 +21,7 @@
     "@angular/core": ">=7.0.0",
     "@angular/common": ">=7.0.0",
     "@angular/router": ">=7.0.0",
-    "@gic/angular": "0.0.0-GIC",
+    "@gic/angular": ">=4.2.5",
     "@ionic/angular": ">=4.0.0"
   },
   "dependencies": {
@@ -36,7 +36,7 @@
     ]
   },
   "sideEffects": false,
-  "releaseGitCommitSha": "ed60d27cc200881723a0bba2034a10181e025e52",
+  "releaseGitCommitSha": "90d41099a9bf0a9cc3be588e259723576c336f28",
   "releaseGitBranch": "",
   "releaseGitUser": " <>"
 }

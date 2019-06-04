@@ -23,7 +23,7 @@ import { IonInfiniteScroll } from '@ionic/angular';
 import { AdminListComponent as BaseAdminListComponent } from '@gngt/core/admin';
 import { Model, ModelActions, ModelListParams, ModelService, reducers as fromModel } from '@gngt/core/model';
 import { AdminUserInteractionsService } from './admin-user-interactions';
-export declare class AdminListComponent<T extends Model, S extends fromModel.State<T>, A1 extends ModelActions.ModelGetAction, A2 extends ModelActions.ModelListAction, A3 extends ModelActions.ModelCreateAction<T>, A4 extends ModelActions.ModelUpdateAction<T>, A5 extends ModelActions.ModelPatchAction<T>, A6 extends ModelActions.ModelDeleteAction<T>, A7 extends ModelActions.ModelDeleteAllAction<T>, A8 extends ModelActions.ModelQueryAction, MS extends ModelService<T, S, A1, A2, A3, A4, A5, A6, A7, A8>> extends BaseAdminListComponent<T, S, A1, A2, A3, A4, A5, A6, A7, A8, MS> implements OnDestroy, OnInit {
+export declare class AdminListComponent<T extends Model, S extends fromModel.State<T>, A extends ModelActions.ModelActionTypes, MS extends ModelService<T, S, A>> extends BaseAdminListComponent<T, S, A, MS> implements OnDestroy, OnInit {
     baseListParams: ModelListParams;
     infiniteScroll: IonInfiniteScroll;
     private _items;

@@ -127,7 +127,7 @@
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     /**
-     * @template T, S, A1, A2, A3, A4, A5, A6, A7, A8
+     * @template T, S, A
      */
     var AdminEditComponent = /** @class */ (function (_super) {
         __extends(AdminEditComponent, _super);
@@ -170,7 +170,7 @@
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     /**
-     * @template T, S, A1, A2, A3, A4, A5, A6, A7, A8, MS
+     * @template T, S, A, MS
      */
     var AdminListComponent = /** @class */ (function (_super) {
         __extends(AdminListComponent, _super);
