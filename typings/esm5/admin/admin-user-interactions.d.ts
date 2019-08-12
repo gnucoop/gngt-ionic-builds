@@ -23,8 +23,8 @@ import { AlertController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { AdminUserInteractionsService as CoreAdminUserInteractionsService } from '@gngt/core/admin';
 export declare class AdminUserInteractionsService extends CoreAdminUserInteractionsService {
-    private alert;
-    private ts;
-    constructor(alert: AlertController, ts: TranslateService);
+    private _alert;
+    private _ts;
+    constructor(_alert: AlertController, _ts: TranslateService);
     askDeleteConfirm(): Observable<boolean>;
 }

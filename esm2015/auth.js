@@ -37,15 +37,15 @@ import { Store } from '@ngrx/store';
  */
 class AuthUserInteractionsService extends AuthUserInteractionsService$1 {
     /**
-     * @param {?} ts
-     * @param {?} alert
-     * @param {?} toast
+     * @param {?} _ts
+     * @param {?} _alert
+     * @param {?} _toast
      */
-    constructor(ts, alert, toast) {
+    constructor(_ts, _alert, _toast) {
         super();
-        this.ts = ts;
-        this.alert = alert;
-        this.toast = toast;
+        this._ts = _ts;
+        this._alert = _alert;
+        this._toast = _toast;
     }
     /**
      * @return {?}
@@ -57,11 +57,11 @@ class AuthUserInteractionsService extends AuthUserInteractionsService$1 {
             'Cancel',
             'Ok'
         ];
-        return this.ts.get(strings).pipe(switchMap((/**
+        return this._ts.get(strings).pipe(switchMap((/**
          * @param {?} ts
          * @return {?}
          */
-        ts => from(this.alert.create({
+        ts => from(this._alert.create({
             message: ts[0],
             buttons: [{ text: ts[1], role: 'cancel' }, { text: ts[2], role: 'confirm' }]
         })))), switchMap((/**
@@ -83,7 +83,7 @@ class AuthUserInteractionsService extends AuthUserInteractionsService$1 {
      * @return {?}
      */
     showLoginError(error) {
-        this.toast.create({
+        this._toast.create({
             message: error,
             showCloseButton: false,
             duration: 3000
@@ -184,16 +184,6 @@ AuthModule.decorators = [
                 ]
             },] },
 ];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 
 export { AuthModule, LoginComponent, AuthUserInteractionsService as ɵa };
 //# sourceMappingURL=auth.js.map

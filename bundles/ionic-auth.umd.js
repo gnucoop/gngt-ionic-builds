@@ -21,7 +21,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common'), require('@angular/common/http'), require('@angular/core'), require('@angular/forms'), require('@ionic/angular'), require('@ngx-translate/core'), require('@gngt/core/common'), require('@gngt/core/auth'), require('@gngt/ionic/common'), require('rxjs'), require('rxjs/operators'), require('@ngrx/store')) :
     typeof define === 'function' && define.amd ? define('@gngt/ionic/auth', ['exports', '@angular/common', '@angular/common/http', '@angular/core', '@angular/forms', '@ionic/angular', '@ngx-translate/core', '@gngt/core/common', '@gngt/core/auth', '@gngt/ionic/common', 'rxjs', 'rxjs/operators', '@ngrx/store'], factory) :
-    (global = global || self, factory((global.dewco = global.dewco || {}, global.dewco.ionic = global.dewco.ionic || {}, global.dewco.ionic.auth = {}), global.ng.common, global.ng.common.http, global.ng.core, global.ng.forms, global.ionic.angular, global.ngxt.core, global.gngt.core.common, global.gngt.core.auth, global.gngt.ionic.common, global.rxjs, global.rxjs.operators, global.ngrx.store));
+    (global = global || self, factory((global.gngt = global.gngt || {}, global.gngt.ionic = global.gngt.ionic || {}, global.gngt.ionic.auth = {}), global.ng.common, global.ng.common.http, global.ng.core, global.ng.forms, global.ionic.angular, global.ngxt.core, global.gngt.core.common, global.gngt.core.auth, global.gngt.ionic.common, global.rxjs, global.rxjs.operators, global.ngrx.store));
 }(this, function (exports, common, http, core, forms, angular, core$1, common$1, auth, common$2, rxjs, operators, store) { 'use strict';
 
     /*! *****************************************************************************
@@ -59,11 +59,11 @@
      */
     var AuthUserInteractionsService = /** @class */ (function (_super) {
         __extends(AuthUserInteractionsService, _super);
-        function AuthUserInteractionsService(ts, alert, toast) {
+        function AuthUserInteractionsService(_ts, _alert, _toast) {
             var _this = _super.call(this) || this;
-            _this.ts = ts;
-            _this.alert = alert;
-            _this.toast = toast;
+            _this._ts = _ts;
+            _this._alert = _alert;
+            _this._toast = _toast;
             return _this;
         }
         /**
@@ -80,11 +80,11 @@
                 'Cancel',
                 'Ok'
             ];
-            return this.ts.get(strings).pipe(operators.switchMap((/**
+            return this._ts.get(strings).pipe(operators.switchMap((/**
              * @param {?} ts
              * @return {?}
              */
-            function (ts) { return rxjs.from(_this.alert.create({
+            function (ts) { return rxjs.from(_this._alert.create({
                 message: ts[0],
                 buttons: [{ text: ts[1], role: 'cancel' }, { text: ts[2], role: 'confirm' }]
             })); })), operators.switchMap((/**
@@ -110,7 +110,7 @@
          * @return {?}
          */
         function (error) {
-            this.toast.create({
+            this._toast.create({
                 message: error,
                 showCloseButton: false,
                 duration: 3000

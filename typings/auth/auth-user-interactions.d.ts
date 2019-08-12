@@ -23,10 +23,10 @@ import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthUserInteractionsService as CoreAuthUserInteractionsService } from '@gngt/core/auth';
 export declare class AuthUserInteractionsService extends CoreAuthUserInteractionsService {
-    private ts;
-    private alert;
-    private toast;
-    constructor(ts: TranslateService, alert: AlertController, toast: ToastController);
+    private _ts;
+    private _alert;
+    private _toast;
+    constructor(_ts: TranslateService, _alert: AlertController, _toast: ToastController);
     askLogoutConfirm(): Observable<boolean>;
     showLoginError(error: string): void;
 }

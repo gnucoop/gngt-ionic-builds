@@ -21,7 +21,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common'), require('@angular/core'), require('@angular/forms'), require('@angular/router'), require('@ionic/angular'), require('@gic/angular'), require('@ngx-translate/core'), require('@gngt/core/common'), require('rxjs'), require('rxjs/operators'), require('@gngt/core/admin')) :
     typeof define === 'function' && define.amd ? define('@gngt/ionic/admin', ['exports', '@angular/common', '@angular/core', '@angular/forms', '@angular/router', '@ionic/angular', '@gic/angular', '@ngx-translate/core', '@gngt/core/common', 'rxjs', 'rxjs/operators', '@gngt/core/admin'], factory) :
-    (global = global || self, factory((global.dewco = global.dewco || {}, global.dewco.ionic = global.dewco.ionic || {}, global.dewco.ionic.admin = {}), global.ng.common, global.ng.core, global.ng.forms, global.ng.router, global.ionic.angular, global.gic.angular, global.ngxt.core, global.gngt.core.common, global.rxjs, global.rxjs.operators, global.gngt.core.admin));
+    (global = global || self, factory((global.gngt = global.gngt || {}, global.gngt.ionic = global.gngt.ionic || {}, global.gngt.ionic.admin = {}), global.ng.common, global.ng.core, global.ng.forms, global.ng.router, global.ionic.angular, global.gic.angular, global.ngxt.core, global.gngt.core.common, global.rxjs, global.rxjs.operators, global.gngt.core.admin));
 }(this, function (exports, common, core, forms, router, angular, angular$1, core$1, common$1, rxjs, operators, admin) { 'use strict';
 
     /*! *****************************************************************************
@@ -70,10 +70,10 @@
      */
     var AdminUserInteractionsService = /** @class */ (function (_super) {
         __extends(AdminUserInteractionsService, _super);
-        function AdminUserInteractionsService(alert, ts) {
+        function AdminUserInteractionsService(_alert, _ts) {
             var _this = _super.call(this) || this;
-            _this.alert = alert;
-            _this.ts = ts;
+            _this._alert = _alert;
+            _this._ts = _ts;
             return _this;
         }
         /**
@@ -90,11 +90,11 @@
                 'Cancel',
                 'Ok'
             ];
-            return this.ts.get(strings).pipe(operators.switchMap((/**
+            return this._ts.get(strings).pipe(operators.switchMap((/**
              * @param {?} ts
              * @return {?}
              */
-            function (ts) { return rxjs.from(_this.alert.create({
+            function (ts) { return rxjs.from(_this._alert.create({
                 message: ts[0],
                 buttons: [{ text: ts[1], role: 'cancel' }, { text: ts[2], role: 'confirm' }]
             })); })), operators.switchMap((/**
@@ -345,7 +345,7 @@
         ]; };
         AdminListComponent.propDecorators = {
             baseListParams: [{ type: core.Input }],
-            infiniteScroll: [{ type: core.ViewChild, args: [angular.IonInfiniteScroll,] }]
+            infiniteScroll: [{ type: core.ViewChild, args: [angular.IonInfiniteScroll, { static: true },] }]
         };
         return AdminListComponent;
     }(admin.AdminListComponent));

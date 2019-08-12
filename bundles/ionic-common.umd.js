@@ -21,7 +21,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('rxjs'), require('@ionic/angular')) :
     typeof define === 'function' && define.amd ? define('@gngt/ionic/common', ['exports', '@angular/core', 'rxjs', '@ionic/angular'], factory) :
-    (global = global || self, factory((global.dewco = global.dewco || {}, global.dewco.ionic = global.dewco.ionic || {}, global.dewco.ionic.common = {}), global.ng.core, global.rxjs, global.ionic.angular));
+    (global = global || self, factory((global.gngt = global.gngt || {}, global.gngt.ionic = global.gngt.ionic || {}, global.gngt.ionic.common = {}), global.ng.core, global.rxjs, global.ionic.angular));
 }(this, function (exports, core, rxjs, angular) { 'use strict';
 
     /**

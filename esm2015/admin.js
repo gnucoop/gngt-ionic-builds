@@ -36,13 +36,13 @@ import { AdminUserInteractionsService as AdminUserInteractionsService$1, AdminEd
  */
 class AdminUserInteractionsService extends AdminUserInteractionsService$1 {
     /**
-     * @param {?} alert
-     * @param {?} ts
+     * @param {?} _alert
+     * @param {?} _ts
      */
-    constructor(alert, ts) {
+    constructor(_alert, _ts) {
         super();
-        this.alert = alert;
-        this.ts = ts;
+        this._alert = _alert;
+        this._ts = _ts;
     }
     /**
      * @return {?}
@@ -54,11 +54,11 @@ class AdminUserInteractionsService extends AdminUserInteractionsService$1 {
             'Cancel',
             'Ok'
         ];
-        return this.ts.get(strings).pipe(switchMap((/**
+        return this._ts.get(strings).pipe(switchMap((/**
          * @param {?} ts
          * @return {?}
          */
-        ts => from(this.alert.create({
+        ts => from(this._alert.create({
             message: ts[0],
             buttons: [{ text: ts[1], role: 'cancel' }, { text: ts[2], role: 'confirm' }]
         })))), switchMap((/**
@@ -277,7 +277,7 @@ AdminListComponent.ctorParameters = () => [
 ];
 AdminListComponent.propDecorators = {
     baseListParams: [{ type: Input }],
-    infiniteScroll: [{ type: ViewChild, args: [IonInfiniteScroll,] }]
+    infiniteScroll: [{ type: ViewChild, args: [IonInfiniteScroll, { static: true },] }]
 };
 
 /**
@@ -310,16 +310,6 @@ AdminModule.decorators = [
                 ]
             },] },
 ];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 
 export { AdminEditComponent, AdminListComponent, AdminModule, AdminUserInteractionsService };
 //# sourceMappingURL=admin.js.map

@@ -152,15 +152,5 @@ var CommonModule = /** @class */ (function () {
     return CommonModule;
 }());
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
 export { CommonModule, InputAriaLabelDirective };
 //# sourceMappingURL=common.es5.js.map

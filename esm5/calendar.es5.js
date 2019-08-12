@@ -91,15 +91,5 @@ var CalendarModule = /** @class */ (function () {
     return CalendarModule;
 }());
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
 export { CalendarModule, CalendarComponent as ɵa };
 //# sourceMappingURL=calendar.es5.js.map

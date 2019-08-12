@@ -37,10 +37,10 @@ import { AdminUserInteractionsService as AdminUserInteractionsService$1, AdminEd
  */
 var AdminUserInteractionsService = /** @class */ (function (_super) {
     __extends(AdminUserInteractionsService, _super);
-    function AdminUserInteractionsService(alert, ts) {
+    function AdminUserInteractionsService(_alert, _ts) {
         var _this = _super.call(this) || this;
-        _this.alert = alert;
-        _this.ts = ts;
+        _this._alert = _alert;
+        _this._ts = _ts;
         return _this;
     }
     /**
@@ -57,11 +57,11 @@ var AdminUserInteractionsService = /** @class */ (function (_super) {
             'Cancel',
             'Ok'
         ];
-        return this.ts.get(strings).pipe(switchMap((/**
+        return this._ts.get(strings).pipe(switchMap((/**
          * @param {?} ts
          * @return {?}
          */
-        function (ts) { return from(_this.alert.create({
+        function (ts) { return from(_this._alert.create({
             message: ts[0],
             buttons: [{ text: ts[1], role: 'cancel' }, { text: ts[2], role: 'confirm' }]
         })); })), switchMap((/**
@@ -312,7 +312,7 @@ var AdminListComponent = /** @class */ (function (_super) {
     ]; };
     AdminListComponent.propDecorators = {
         baseListParams: [{ type: Input }],
-        infiniteScroll: [{ type: ViewChild, args: [IonInfiniteScroll,] }]
+        infiniteScroll: [{ type: ViewChild, args: [IonInfiniteScroll, { static: true },] }]
     };
     return AdminListComponent;
 }(AdminListComponent$1));
@@ -350,16 +350,6 @@ var AdminModule = /** @class */ (function () {
     ];
     return AdminModule;
 }());
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 
 export { AdminEditComponent, AdminListComponent, AdminModule, AdminUserInteractionsService };
 //# sourceMappingURL=admin.es5.js.map
