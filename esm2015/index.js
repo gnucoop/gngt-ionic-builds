@@ -1,0 +1,27 @@
+/**
+ * @license
+ * Copyright (C) Gnucoop soc. coop.
+ *
+ * This file is part of the Gnucoop Angular Toolkit (gngt).
+ *
+ * Gnucoop Angular Toolkit (gngt) is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Gnucoop Angular Toolkit (gngt) is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Gnucoop Angular Toolkit (gngt).  If not, see http://www.gnu.org/licenses/.
+ *
+ */
+// primary entry-point which is empty as of version 9. All components should
+// be imported through their individual entry-points. This file is needed to
+// satisfy the "ng_package" bazel rule which also requires a primary entry-point.
+// Workaround for: https://github.com/microsoft/rushstack/issues/2806.
+// This is a private export that can be removed at any time.
+export const ɵɵtsModuleIndicatorApiExtractorWorkaround = true;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi9zcmMvaW9uaWMvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7R0FtQkc7QUFFSCw0RUFBNEU7QUFDNUUsNEVBQTRFO0FBQzVFLGlGQUFpRjtBQUVqRixzRUFBc0U7QUFDdEUsNERBQTREO0FBQzVELE1BQU0sQ0FBQyxNQUFNLHlDQUF5QyxHQUFHLElBQUksQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogQGxpY2Vuc2VcbiAqIENvcHlyaWdodCAoQykgR251Y29vcCBzb2MuIGNvb3AuXG4gKlxuICogVGhpcyBmaWxlIGlzIHBhcnQgb2YgdGhlIEdudWNvb3AgQW5ndWxhciBUb29sa2l0IChnbmd0KS5cbiAqXG4gKiBHbnVjb29wIEFuZ3VsYXIgVG9vbGtpdCAoZ25ndCkgaXMgZnJlZSBzb2Z0d2FyZTogeW91IGNhbiByZWRpc3RyaWJ1dGUgaXQgYW5kL29yIG1vZGlmeVxuICogaXQgdW5kZXIgdGhlIHRlcm1zIG9mIHRoZSBHTlUgR2VuZXJhbCBQdWJsaWMgTGljZW5zZSBhcyBwdWJsaXNoZWQgYnlcbiAqIHRoZSBGcmVlIFNvZnR3YXJlIEZvdW5kYXRpb24sIGVpdGhlciB2ZXJzaW9uIDMgb2YgdGhlIExpY2Vuc2UsIG9yXG4gKiAoYXQgeW91ciBvcHRpb24pIGFueSBsYXRlciB2ZXJzaW9uLlxuICpcbiAqIEdudWNvb3AgQW5ndWxhciBUb29sa2l0IChnbmd0KSBpcyBkaXN0cmlidXRlZCBpbiB0aGUgaG9wZSB0aGF0IGl0IHdpbGwgYmUgdXNlZnVsLFxuICogYnV0IFdJVEhPVVQgQU5ZIFdBUlJBTlRZOyB3aXRob3V0IGV2ZW4gdGhlIGltcGxpZWQgd2FycmFudHkgb2ZcbiAqIE1FUkNIQU5UQUJJTElUWSBvciBGSVRORVNTIEZPUiBBIFBBUlRJQ1VMQVIgUFVSUE9TRS4gIFNlZSB0aGVcbiAqIEdOVSBHZW5lcmFsIFB1YmxpYyBMaWNlbnNlIGZvciBtb3JlIGRldGFpbHMuXG4gKlxuICogWW91IHNob3VsZCBoYXZlIHJlY2VpdmVkIGEgY29weSBvZiB0aGUgR05VIEdlbmVyYWwgUHVibGljIExpY2Vuc2VcbiAqIGFsb25nIHdpdGggR251Y29vcCBBbmd1bGFyIFRvb2xraXQgKGduZ3QpLiAgSWYgbm90LCBzZWUgaHR0cDovL3d3dy5nbnUub3JnL2xpY2Vuc2VzLy5cbiAqXG4gKi9cblxuLy8gcHJpbWFyeSBlbnRyeS1wb2ludCB3aGljaCBpcyBlbXB0eSBhcyBvZiB2ZXJzaW9uIDkuIEFsbCBjb21wb25lbnRzIHNob3VsZFxuLy8gYmUgaW1wb3J0ZWQgdGhyb3VnaCB0aGVpciBpbmRpdmlkdWFsIGVudHJ5LXBvaW50cy4gVGhpcyBmaWxlIGlzIG5lZWRlZCB0b1xuLy8gc2F0aXNmeSB0aGUgXCJuZ19wYWNrYWdlXCIgYmF6ZWwgcnVsZSB3aGljaCBhbHNvIHJlcXVpcmVzIGEgcHJpbWFyeSBlbnRyeS1wb2ludC5cblxuLy8gV29ya2Fyb3VuZCBmb3I6IGh0dHBzOi8vZ2l0aHViLmNvbS9taWNyb3NvZnQvcnVzaHN0YWNrL2lzc3Vlcy8yODA2LlxuLy8gVGhpcyBpcyBhIHByaXZhdGUgZXhwb3J0IHRoYXQgY2FuIGJlIHJlbW92ZWQgYXQgYW55IHRpbWUuXG5leHBvcnQgY29uc3QgybXJtXRzTW9kdWxlSW5kaWNhdG9yQXBpRXh0cmFjdG9yV29ya2Fyb3VuZCA9IHRydWU7XG4iXX0=

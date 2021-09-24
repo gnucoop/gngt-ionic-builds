@@ -1,42 +1,39 @@
-/**
- * @license
- * Copyright (C) 2018 Gnucoop soc. coop.
- *
- * This file is part of the Gnucoop Angular Toolkit (gngt).
- *
- * Gnucoop Angular Toolkit (gngt) is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * Gnucoop Angular Toolkit (gngt) is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with Gnucoop Angular Toolkit (gngt).  If not, see http://www.gnu.org/licenses/.
- *
- */
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core')) :
-	typeof define === 'function' && define.amd ? define('@gngt/ionic', ['exports', '@angular/core'], factory) :
-	(global = global || self, factory((global.gngt = global.gngt || {}, global.gngt.ionic = {}), global.ng.core));
-}(this, function (exports, core) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+	typeof define === 'function' && define.amd ? define('@gngt/ionic', ['exports'], factory) :
+	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory((global.gngt = global.gngt || {}, global.gngt.ionic = {})));
+}(this, (function (exports) { 'use strict';
 
 	/**
-	 * @fileoverview added by tsickle
-	 * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+	 * @license
+	 * Copyright (C) Gnucoop soc. coop.
+	 *
+	 * This file is part of the Gnucoop Angular Toolkit (gngt).
+	 *
+	 * Gnucoop Angular Toolkit (gngt) is free software: you can redistribute it and/or modify
+	 * it under the terms of the GNU General Public License as published by
+	 * the Free Software Foundation, either version 3 of the License, or
+	 * (at your option) any later version.
+	 *
+	 * Gnucoop Angular Toolkit (gngt) is distributed in the hope that it will be useful,
+	 * but WITHOUT ANY WARRANTY; without even the implied warranty of
+	 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	 * GNU General Public License for more details.
+	 *
+	 * You should have received a copy of the GNU General Public License
+	 * along with Gnucoop Angular Toolkit (gngt).  If not, see http://www.gnu.org/licenses/.
+	 *
 	 */
-	/**
-	 * Current version of Gngt.
-	 * @type {?}
-	 */
-	var VERSION = new core.Version('8.0.2-32e7ee1');
+	// primary entry-point which is empty as of version 9. All components should
+	// be imported through their individual entry-points. This file is needed to
+	// satisfy the "ng_package" bazel rule which also requires a primary entry-point.
+	// Workaround for: https://github.com/microsoft/rushstack/issues/2806.
+	// This is a private export that can be removed at any time.
+	var ɵɵtsModuleIndicatorApiExtractorWorkaround = true;
 
-	exports.VERSION = VERSION;
+	exports.ɵɵtsModuleIndicatorApiExtractorWorkaround = ɵɵtsModuleIndicatorApiExtractorWorkaround;
 
 	Object.defineProperty(exports, '__esModule', { value: true });
 
-}));
+})));
 //# sourceMappingURL=ionic.umd.js.map

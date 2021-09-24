@@ -1,0 +1,48 @@
+/**
+ * @license
+ * Copyright (C) Gnucoop soc. coop.
+ *
+ * This file is part of the Gnucoop Angular Toolkit (gngt).
+ *
+ * Gnucoop Angular Toolkit (gngt) is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Gnucoop Angular Toolkit (gngt) is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Gnucoop Angular Toolkit (gngt).  If not, see http://www.gnu.org/licenses/.
+ *
+ */
+import { Injectable } from '@angular/core';
+import { AdminUserInteractionsService as CoreAdminUserInteractionsService } from '@gngt/core/admin';
+import { AlertController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
+import { from } from 'rxjs';
+import { map, mapTo, switchMap } from 'rxjs/operators';
+export class AdminUserInteractionsService extends CoreAdminUserInteractionsService {
+    constructor(_alert, _ts) {
+        super();
+        this._alert = _alert;
+        this._ts = _ts;
+    }
+    askDeleteConfirm() {
+        const strings = ['Are you sure you want to delete?', 'Cancel', 'Ok'];
+        return this._ts.get(strings).pipe(switchMap(ts => from(this._alert.create({
+            message: ts[0],
+            buttons: [{ text: ts[1], role: 'cancel' }, { text: ts[2], role: 'confirm' }]
+        }))), switchMap(alert => from(alert.present()).pipe(mapTo(alert))), switchMap(alert => from(alert.onDidDismiss())), map(evt => evt.role === 'confirm'));
+    }
+}
+AdminUserInteractionsService.decorators = [
+    { type: Injectable }
+];
+AdminUserInteractionsService.ctorParameters = () => [
+    { type: AlertController },
+    { type: TranslateService }
+];
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYWRtaW4tdXNlci1pbnRlcmFjdGlvbnMuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi8uLi9zcmMvaW9uaWMvYWRtaW4vYWRtaW4tdXNlci1pbnRlcmFjdGlvbnMudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7R0FtQkc7QUFFSCxPQUFPLEVBQUMsVUFBVSxFQUFDLE1BQU0sZUFBZSxDQUFDO0FBQ3pDLE9BQU8sRUFBQyw0QkFBNEIsSUFBSSxnQ0FBZ0MsRUFBQyxNQUFNLGtCQUFrQixDQUFDO0FBQ2xHLE9BQU8sRUFBQyxlQUFlLEVBQUMsTUFBTSxnQkFBZ0IsQ0FBQztBQUUvQyxPQUFPLEVBQUMsZ0JBQWdCLEVBQUMsTUFBTSxxQkFBcUIsQ0FBQztBQUNyRCxPQUFPLEVBQUMsSUFBSSxFQUFhLE1BQU0sTUFBTSxDQUFDO0FBQ3RDLE9BQU8sRUFBQyxHQUFHLEVBQUUsS0FBSyxFQUFFLFNBQVMsRUFBQyxNQUFNLGdCQUFnQixDQUFDO0FBR3JELE1BQU0sT0FBTyw0QkFBNkIsU0FBUSxnQ0FBZ0M7SUFDaEYsWUFBb0IsTUFBdUIsRUFBVSxHQUFxQjtRQUN4RSxLQUFLLEVBQUUsQ0FBQztRQURVLFdBQU0sR0FBTixNQUFNLENBQWlCO1FBQVUsUUFBRyxHQUFILEdBQUcsQ0FBa0I7SUFFMUUsQ0FBQztJQUVELGdCQUFnQjtRQUNkLE1BQU0sT0FBTyxHQUFHLENBQUMsa0NBQWtDLEVBQUUsUUFBUSxFQUFFLElBQUksQ0FBQyxDQUFDO1FBQ3JFLE9BQU8sSUFBSSxDQUFDLEdBQUcsQ0FBQyxHQUFHLENBQUMsT0FBTyxDQUFDLENBQUMsSUFBSSxDQUM3QixTQUFTLENBQUMsRUFBRSxDQUFDLEVBQUUsQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFDLE1BQU0sQ0FBQyxNQUFNLENBQUM7WUFDNUIsT0FBTyxFQUFFLEVBQUUsQ0FBQyxDQUFDLENBQUM7WUFDZCxPQUFPLEVBQUUsQ0FBQyxFQUFDLElBQUksRUFBRSxFQUFFLENBQUMsQ0FBQyxDQUFDLEVBQUUsSUFBSSxFQUFFLFFBQVEsRUFBQyxFQUFFLEVBQUMsSUFBSSxFQUFFLEVBQUUsQ0FBQyxDQUFDLENBQUMsRUFBRSxJQUFJLEVBQUUsU0FBUyxFQUFDLENBQUM7U0FDekUsQ0FBQyxDQUFDLENBQUMsRUFDZCxTQUFTLENBQUMsS0FBSyxDQUFDLEVBQUUsQ0FBQyxJQUFJLENBQUUsS0FBNkIsQ0FBQyxPQUFPLEVBQUUsQ0FBQyxDQUFDLElBQUksQ0FBQyxLQUFLLENBQUMsS0FBSyxDQUFDLENBQUMsQ0FBQyxFQUNyRixTQUFTLENBQUMsS0FBSyxDQUFDLEVBQUUsQ0FBQyxJQUFJLENBQUUsS0FBNkIsQ0FBQyxZQUFZLEVBQUUsQ0FBQyxDQUFDLEVBQ3ZFLEdBQUcsQ0FBQyxHQUFHLENBQUMsRUFBRSxDQUFFLEdBQStCLENBQUMsSUFBSSxLQUFLLFNBQVMsQ0FBQyxDQUNsRSxDQUFDO0lBQ0osQ0FBQzs7O1lBakJGLFVBQVU7OztZQU5ILGVBQWU7WUFFZixnQkFBZ0IiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEBsaWNlbnNlXG4gKiBDb3B5cmlnaHQgKEMpIEdudWNvb3Agc29jLiBjb29wLlxuICpcbiAqIFRoaXMgZmlsZSBpcyBwYXJ0IG9mIHRoZSBHbnVjb29wIEFuZ3VsYXIgVG9vbGtpdCAoZ25ndCkuXG4gKlxuICogR251Y29vcCBBbmd1bGFyIFRvb2xraXQgKGduZ3QpIGlzIGZyZWUgc29mdHdhcmU6IHlvdSBjYW4gcmVkaXN0cmlidXRlIGl0IGFuZC9vciBtb2RpZnlcbiAqIGl0IHVuZGVyIHRoZSB0ZXJtcyBvZiB0aGUgR05VIEdlbmVyYWwgUHVibGljIExpY2Vuc2UgYXMgcHVibGlzaGVkIGJ5XG4gKiB0aGUgRnJlZSBTb2Z0d2FyZSBGb3VuZGF0aW9uLCBlaXRoZXIgdmVyc2lvbiAzIG9mIHRoZSBMaWNlbnNlLCBvclxuICogKGF0IHlvdXIgb3B0aW9uKSBhbnkgbGF0ZXIgdmVyc2lvbi5cbiAqXG4gKiBHbnVjb29wIEFuZ3VsYXIgVG9vbGtpdCAoZ25ndCkgaXMgZGlzdHJpYnV0ZWQgaW4gdGhlIGhvcGUgdGhhdCBpdCB3aWxsIGJlIHVzZWZ1bCxcbiAqIGJ1dCBXSVRIT1VUIEFOWSBXQVJSQU5UWTsgd2l0aG91dCBldmVuIHRoZSBpbXBsaWVkIHdhcnJhbnR5IG9mXG4gKiBNRVJDSEFOVEFCSUxJVFkgb3IgRklUTkVTUyBGT1IgQSBQQVJUSUNVTEFSIFBVUlBPU0UuICBTZWUgdGhlXG4gKiBHTlUgR2VuZXJhbCBQdWJsaWMgTGljZW5zZSBmb3IgbW9yZSBkZXRhaWxzLlxuICpcbiAqIFlvdSBzaG91bGQgaGF2ZSByZWNlaXZlZCBhIGNvcHkgb2YgdGhlIEdOVSBHZW5lcmFsIFB1YmxpYyBMaWNlbnNlXG4gKiBhbG9uZyB3aXRoIEdudWNvb3AgQW5ndWxhciBUb29sa2l0IChnbmd0KS4gIElmIG5vdCwgc2VlIGh0dHA6Ly93d3cuZ251Lm9yZy9saWNlbnNlcy8uXG4gKlxuICovXG5cbmltcG9ydCB7SW5qZWN0YWJsZX0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5pbXBvcnQge0FkbWluVXNlckludGVyYWN0aW9uc1NlcnZpY2UgYXMgQ29yZUFkbWluVXNlckludGVyYWN0aW9uc1NlcnZpY2V9IGZyb20gJ0Bnbmd0L2NvcmUvYWRtaW4nO1xuaW1wb3J0IHtBbGVydENvbnRyb2xsZXJ9IGZyb20gJ0Bpb25pYy9hbmd1bGFyJztcbmltcG9ydCB7T3ZlcmxheUV2ZW50RGV0YWlsfSBmcm9tICdAaW9uaWMvY29yZSc7XG5pbXBvcnQge1RyYW5zbGF0ZVNlcnZpY2V9IGZyb20gJ0BuZ3gtdHJhbnNsYXRlL2NvcmUnO1xuaW1wb3J0IHtmcm9tLCBPYnNlcnZhYmxlfSBmcm9tICdyeGpzJztcbmltcG9ydCB7bWFwLCBtYXBUbywgc3dpdGNoTWFwfSBmcm9tICdyeGpzL29wZXJhdG9ycyc7XG5cbkBJbmplY3RhYmxlKClcbmV4cG9ydCBjbGFzcyBBZG1pblVzZXJJbnRlcmFjdGlvbnNTZXJ2aWNlIGV4dGVuZHMgQ29yZUFkbWluVXNlckludGVyYWN0aW9uc1NlcnZpY2Uge1xuICBjb25zdHJ1Y3Rvcihwcml2YXRlIF9hbGVydDogQWxlcnRDb250cm9sbGVyLCBwcml2YXRlIF90czogVHJhbnNsYXRlU2VydmljZSkge1xuICAgIHN1cGVyKCk7XG4gIH1cblxuICBhc2tEZWxldGVDb25maXJtKCk6IE9ic2VydmFibGU8Ym9vbGVhbj4ge1xuICAgIGNvbnN0IHN0cmluZ3MgPSBbJ0FyZSB5b3Ugc3VyZSB5b3Ugd2FudCB0byBkZWxldGU/JywgJ0NhbmNlbCcsICdPayddO1xuICAgIHJldHVybiB0aGlzLl90cy5nZXQoc3RyaW5ncykucGlwZShcbiAgICAgICAgc3dpdGNoTWFwKHRzID0+IGZyb20odGhpcy5fYWxlcnQuY3JlYXRlKHtcbiAgICAgICAgICAgICAgICAgICAgbWVzc2FnZTogdHNbMF0sXG4gICAgICAgICAgICAgICAgICAgIGJ1dHRvbnM6IFt7dGV4dDogdHNbMV0sIHJvbGU6ICdjYW5jZWwnfSwge3RleHQ6IHRzWzJdLCByb2xlOiAnY29uZmlybSd9XVxuICAgICAgICAgICAgICAgICAgfSkpKSxcbiAgICAgICAgc3dpdGNoTWFwKGFsZXJ0ID0+IGZyb20oKGFsZXJ0IGFzIEhUTUxJb25BbGVydEVsZW1lbnQpLnByZXNlbnQoKSkucGlwZShtYXBUbyhhbGVydCkpKSxcbiAgICAgICAgc3dpdGNoTWFwKGFsZXJ0ID0+IGZyb20oKGFsZXJ0IGFzIEhUTUxJb25BbGVydEVsZW1lbnQpLm9uRGlkRGlzbWlzcygpKSksXG4gICAgICAgIG1hcChldnQgPT4gKGV2dCBhcyBPdmVybGF5RXZlbnREZXRhaWw8YW55Pikucm9sZSA9PT0gJ2NvbmZpcm0nKSxcbiAgICApO1xuICB9XG59XG4iXX0=
